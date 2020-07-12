@@ -54,6 +54,8 @@ def changeDeaths(stateName):
     Y1_test[j, :] = Y1_data[j+num_examples1-seq_length : j+num_examples1-seq_length+1]
   model.fit(X1_res, Y1_res)
   y1_pred = model.predict(X1_test)
+  max_pool_2d = tf.keras.layers.MaxPooling2D(pool_size=(2, 2), strides=(1, 1), padding='valid')
+  y = tf.keras.layers.Conv2D(2, 3, activation='relu', input_shape=input_shape[2:])(x)
   return y1_pred
 changeDeaths('California')
 
